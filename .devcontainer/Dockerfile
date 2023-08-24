@@ -1,5 +1,10 @@
 FROM mcr.microsoft.com/devcontainers/javascript-node:0-20
 
+# Install Cascadia Code font
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get install -y fonts-cascadia-code \
+    && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
 # Install MongoDB command line tools - though mongo-database-tools not available on arm64
 ARG MONGO_TOOLS_VERSION=6.0
 RUN . /etc/os-release \
