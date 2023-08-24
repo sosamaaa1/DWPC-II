@@ -15,7 +15,17 @@
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"mongodb.mongodb-vscode"
+				"mongodb.mongodb-vscode",
+				"PKief.material-icon-theme",
+				"ritwickdey.LiveServer",
+				"meganrogge.template-string-converter",
+				"wayou.vscode-todo-highlight",
+				"rangav.vscode-thunder-client",
+				"eamodio.gitlens",
+				"usernamehw.errorlens",
+				"esbenp.prettier-vscode",
+				"christian-kohler.path-intellisense",
+				"dbaeumer.vscode-eslint"
 			]
 		}
 	},
