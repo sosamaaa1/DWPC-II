@@ -9,33 +9,14 @@ function getRandomImage() {
   return images[randomIndex];
 }
 
-/* GET /about/tec - Página HTML con información del Tecnológico */
-router.get('/', function (req, res, next) {
-  // Crea una imagen aleatoria
-  var randomImage = getRandomImage();
-
-  // Definir la variable 'title' aquí
-  var title = 'Tecno de Gustavo A Madero';
-
-  // Renderiza una página HTML dinámica con la información del Tecnológico y la imagen aleatoria
-  res.render('tec', {
-    title: title,
-    name: "Tec de Gustavo A Madero",
-    description: "Información sobre el Tecnológico",
-    mission: "Nuestra misión es...",
-    values: "Nuestros valores son...",
-    image: randomImage
-  });
-});
-
 /* GET /about/api/tec - Respuesta JSON */
-router.get('/api/tec', function (req, res, next) {
+router.get('/', function (req, res, next) {
   // Crea una imagen aleatoria específica para la ruta JSON
   var randomImageForAPI = getRandomImage();
 
   // Respuesta JSON con información del Tecnológico y la imagen aleatoria específica
   var tecInfo = {
-    name: "Tec de Gustavo A Madero",
+    name: "Tecno de Gustavo A Madero",
     description: "Información sobre el Tecnológico",
     mission: "Nuestra misión es...",
     values: "Nuestros valores son...",

@@ -7,7 +7,8 @@ var logger = require('morgan');
 var debug = require('debug')('dwpc-ii:server');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var tecRouter = require('./routes/tec'); // Importa la nueva ruta
+var tecRouterHTML = require('./routes/tecHTML'); // Ruta para HTML
+var tecRouterJSON = require('./routes/tecJSON'); // Ruta para JSON
 
 //var testRouter = require('./routes/test');
 // Creando ka instancia de express
@@ -33,9 +34,8 @@ app.use('/users', usersRouter);
 //app.use('/author', (req,res)=>{
 //  res.json({mainDeveloper:"Sosa"})
 //});
-
-app.use('/about/tec', tecRouter); // Agrega la nueva ruta "/about/tec"
-app.use('/about/api/tec', tecRouter); // Agrega la nueva ruta "/about/api/tec"
+app.use('/about/tec', tecRouterHTML); // Utiliza la instancia para HTML
+app.use('/about/api/tec', tecRouterJSON); // Utiliza la instancia para JSON
 //app.use('/test', testRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
