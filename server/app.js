@@ -7,9 +7,11 @@ var logger = require('morgan');
 var debug = require('debug')('dwpc-ii:server');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+//--------------------------------------------------------------
+//AGREGANDO LINEAS DE CODIGO PARA LEER LAS NUEVAS RUTAS
 var tecRouterHTML = require('./routes/tecHTML'); // Ruta para HTML
 var tecRouterJSON = require('./routes/tecJSON'); // Ruta para JSON
-
+//--------------------------------------------------------------
 //var testRouter = require('./routes/test');
 // Creando ka instancia de express
 var app = express();
@@ -34,8 +36,11 @@ app.use('/users', usersRouter);
 //app.use('/author', (req,res)=>{
 //  res.json({mainDeveloper:"Sosa"})
 //});
-app.use('/about/tec', tecRouterHTML); // Utiliza la instancia para HTML
-app.use('/about/api/tec', tecRouterJSON); // Utiliza la instancia para JSON
+//--------------------------------------------------------------
+// ACTIVANDO RUTAS AGREGADAS ("/about/tec" Y "/about/api/tec")
+app.use('/about/tec', tecRouterHTML); 
+app.use('/about/api/tec', tecRouterJSON); 
+//--------------------------------------------------------------
 //app.use('/test', testRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

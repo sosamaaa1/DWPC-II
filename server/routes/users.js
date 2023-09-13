@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 /* GET /users/author */
 router.get('/author', function(_, res, ) {
-  res.render('author',{author:"Gonzalez Sosa"});
+  res.render('author',{author:"Gonzalez Sosa y Trejo Lopez"});
 });
 
 module.exports = router;
