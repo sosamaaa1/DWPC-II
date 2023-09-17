@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./dist/routes/bin/www",
     "dev": "DEBUG=dwpc-ii:server && babel--watch ./server/bin/www",
-    "devc" : "NODE_ENV=development webpack serve --config ./webpack.config.js --mode development",
+    "devc": "NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development",
     "build": "npm run clean && babel ./server --out-dir dist --copy-files",
     "clean": "rm -rf ./dist"
   },
