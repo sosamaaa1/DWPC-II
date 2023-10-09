@@ -1,1 +1,4 @@
-(()=>{"use strict";console.log("🎉 Estilos cargados correctamente 🎉")})();
+(() => {
+  'use strict';
+  console.log('🎉 Estilos cargados correctamente 🎉');
+})();
