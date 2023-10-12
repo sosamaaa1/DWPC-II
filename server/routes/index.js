@@ -1,49 +1,23 @@
-var express = require('express');
-var router =
-  express.Router();
+const express = require('express');
+
+const router = express.Router();
 
 /* GET */
-router.get(
-  '/',
-  function (
-    req,
-    res,
-    next,
-  ) {
-    res.render(
-      'index',
-      {
-        title:
-          'sosa',
-        author:
-          'Gonzalez Sosa',
-      },
-    );
-  },
-);
+router.get('/', (req, res, next) => {
+  res.render('index', {
+    title: 'sosa',
+    author: 'Gonzalez Sosa',
+  });
+});
 
-module.exports =
-  router;
+module.exports = router;
 
 /* GET */
-router.get(
-  '/',
-  function (
-    req,
-    res,
-    next,
-  ) {
-    res.render(
-      'index',
-      {
-        title:
-          'sosa',
-        author:
-          'Gonzalez ',
-      },
-    );
-  },
-);
+router.get('/', (req, res, next) => {
+  res.render('index', {
+    title: 'sosa',
+    author: 'Gonzalez ',
+  });
+});
 
-module.exports =
-  router;
+module.exports = router;

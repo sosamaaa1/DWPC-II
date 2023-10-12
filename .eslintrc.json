@@ -15,6 +15,7 @@
     "import/resolver" : { "babel-module" : {}}
   },
   "globals": {
-    "__rootdir": "readonly"
+    "__rootdir": "readonly",
+    "M": "writable"
   }
 }
