@@ -9,21 +9,21 @@ import cookieParser from 'cookie-parser';
 // Library to log http communication
 import morgan from 'morgan';
 
-// Importing subroutes
-import indexRouter from '@server/routes/index';
-import usersRouter from '@server/routes/users';
-import apiRouter from '@server/routes/api';
+// Importing template-engine
+import configTemplateEngine from '@server/config/templateEngine';
+
 // Setting Webpack Modules
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
-// Importing template-engine
-import configTemplateEngine from './config/templateEngine';
 // Importing webpack configuration
 import webpackConfig from '../webpack.dev.config';
 
 // Impornting winston logger
 import log from './config/winston';
+
+// Importando enrutador
+import router from './router';
 
 // Creando variable del directorio raiz
 // eslint-disable-next-line
@@ -62,38 +62,23 @@ if (nodeEnviroment === 'development') {
   console.log('🏭 Ejecutando en modo producción 🏭');
 }
 
-// view engine setup
-// We are delcaring the localization of the views
-// app.set('views', path.join(__dirname, 'views'));
-// Setting up the template engine
-// app.set('view engine', 'hbs');
 // Configuring the template engine
 configTemplateEngine(app);
 
 // Registering middlewares
 // Log all received requests
-app.use(
-  morgan('dev', {
-    stream: log.stream,
-  }),
-);
+app.use(morgan('dev', { stream: log.stream }));
 // Parse request data into json
 app.use(express.json());
 // Decode url info
-app.use(
-  express.urlencoded({
-    extended: false,
-  }),
-);
+app.use(express.urlencoded({ extended: false }));
 // Parse client cookies into json
 app.use(cookieParser());
 // Set up the static file server
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Registering routes
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/api', apiRouter);
+router.addRoutes(app);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
