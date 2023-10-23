@@ -10,12 +10,12 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 
 // Importing template-engine
-import configTemplateEngine from '@server/config/templateEngine';
 
 // Setting Webpack Modules
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
+import configTemplateEngine from './config/templateEngine';
 // Importing webpack configuration
 import webpackConfig from '../webpack.dev.config';
 
