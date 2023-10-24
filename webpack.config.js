@@ -1,37 +1,27 @@
-// Important notes
-// 🚨 Configuration file must use ES5 not ES6
-// that's why you will see "requires" not "imports"
-
-// Importing an file routing manager
+// Importar el modulo Path
 const path = require('path');
-// Importing plugin
+// Importing Extract Plugin
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// We export a configuration object
-// that will be used by webpack
+// Exportamos un Configuration Options Object
 module.exports = {
-  // 1. The entry file from which
-  // it will contain all the definitions to package
-  entry: './client/index.js',
-  // 2. Specify the output file
-  // Here it is detailed where the file will be
-  // final packaged.
+  // 0. Estableciendo el modo produccion
+  mode: 'production',
+  // 1. Estableciendo el archivo indexador
+  // del front-end
+  entry: "./client/index.js",
+  // 2. Estableciendo el archivo de salida
   output: {
-    // 2.1 Absolute output path
-    // Note that it is being placed in the directory
-    // of the project's static files
-    path: path.resolve(__dirname, 'public'),
-    // 2.2 Output file name
-    filename: 'bundle.js',
+    // 2.1 Ruta Absoluta de Salida
+    path: path.resolve(__dirname, "public"),
+    // 2.2 Nombre del archivo de salida
+    filename: "bundle.js",
   },
-  // Adding a module to webpack
+  // Agregando un modulo a webpack
   module: {
     rules: [
       {
-        // This section stablishes
-        // what rules to apply to ".js" files
         test: /\.js$/,
-        // We Dont want to transpile any kind of modules
         exclude: /(node_modules|bower_components)/,
         use: [
           {
@@ -41,27 +31,26 @@ module.exports = {
                 [
                   '@babel/preset-env',
                   {
-                    modules: false,
-                    useBuiltIns: 'usage',
-                    targets: '> 0.25%, not dead',
-                    corejs: 3,
-                  },
-                ],
-              ],
-            },
-          },
-        ],
+                    'modules': false,
+                    'useBuiltIns': 'usage',
+                    'targets': '> 0.25%, not dead',
+                    'corejs': 3
+                  }
+                ]
+              ]
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-    ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ]
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      // Archivo css de salida
-      filename: 'styles/app.css',
-    }),
-  ],
-};
+  // Sección de Plugins
+  plugins: [new MiniCssExtractPlugin({
+    // Archivo css de salida
+    filename: 'styles/app.css'
+  })]
+}
