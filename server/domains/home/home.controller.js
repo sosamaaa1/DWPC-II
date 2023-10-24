@@ -7,7 +7,13 @@ const home = (req, res) => {
   res.render('index', { title: 'DWPCII-2023A', icon });
 };
 
+// GET '/user/register'
+const about = (req, res) => {
+  res.send("🚧 UNDER CONSTRUCTION GET '/about' 🚧");
+};
+
 // Controlador Home
 export default {
   home,
+  about,
 };

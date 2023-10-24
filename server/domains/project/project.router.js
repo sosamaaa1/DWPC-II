@@ -9,11 +9,11 @@ const router = new Router();
 
 // Enrutamos
 // GET '/project/projects'
-router.get('/projects ', projectController.project);
+router.get('/projects', projectController.projects);
 // GET '/project/dashboard'
-router.get('/dashboard ', projectController.dashboard);
+router.get('/dashboard', projectController.dashboard);
 // GET '/project/add'
-router.get('/add ', projectController.add);
+router.get('/add', projectController.add);
 // GET '/project/addForm '
 router.get('/addForm', projectController.addForm);
 // Exporto este tramo de ruta
