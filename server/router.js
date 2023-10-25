@@ -9,7 +9,6 @@ const addRoutes = (app) => {
   app.use('/', homeRouter);
   app.use('/user', userRouter);
   app.use('/project', projectRouter);
-  app.use('/about', projectRouter);
   return app;
 };
 
