@@ -1,26 +1,30 @@
 // Actions methods
+// GET "/project"
+const showDashboard = (req, res) => {
+  res.send('⚠️ UNDER CONSTRUCTION: GET /project ⚠️');
+};
 
-// GET '/user/login'
-const projects = (req, res) => {
-  res.send("🚧 UNDER CONSTRUCTION GET '/project/projects' 🚧");
-};
-// GET '/user/logout'
-const dashboard = (req, res) => {
-  res.send("🚧 UNDER CONSTRUCTION GET '/project/dashboard' 🚧");
-};
-// GET '/user/add'
+// GET "/project/add"
 const add = (req, res) => {
-  res.send("🚧 UNDER CONSTRUCTION GET '/project/add' 🚧");
+  res.render('project/addView');
 };
-// GET '/user/register'
-const addForm = (req, res) => {
-  res.send("🚧 UNDER CONSTRUCTION GET '/project/addForm' 🚧");
-};
-// Controlador Home
 
+// POST "/project/add"
+const addPost = (req, res) => {
+  // Extrayendo la informacion
+  // del formulario
+  const { name, description } = req.body;
+  // Regresando al cliente la información recabada
+  res.status(200).json({
+    name,
+    description,
+  });
+};
+
+// Controlador user
 export default {
-  projects,
-  dashboard,
-  addForm,
+  // Action Methods
+  showDashboard,
   add,
+  addPost,
 };
