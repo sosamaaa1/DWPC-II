@@ -17,7 +17,12 @@
               name='name'
               type='text'
               class="validate"
-            />
+              		value="{{ project.name }}"
+  />
+  {{#if errorModel.name }}
+    <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+  {{/if}}
+            
           </div>
           <div class='input-field'>
             <label for='project-description'>
@@ -26,7 +31,10 @@
             <textarea
               id='project-description'
               name='description'
-              class="materialize-textarea" required></textarea>
+              class="materialize-textarea" required>{{project.description}}</textarea>
+  {{#if errorModel.description }}
+    <span style="color: crimson;">Error: {{ errorModel.description }}</span>
+  {{/if}}
           </div>
         </div>
         <div class="card-action">
