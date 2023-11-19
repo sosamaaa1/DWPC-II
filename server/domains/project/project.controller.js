@@ -16,9 +16,9 @@ const addForm = (req, res) => {
 // GET '/project'
 const showDashboard = async (req, res) => {
   // Consultado todos los proyectos
-  const projects = await ProjectModel.find({});
-  // Enviando los proyectos al cliente en JSON
-  res.status(200).json(projects);
+  const projects = await ProjectModel.find({}).lean().exec();
+  // Se entrega la vista dashboardView con el viewmodel projects
+  res.render('project/dashboardView', { projects });
 };
 
 // POST "/project/add"
