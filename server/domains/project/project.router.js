@@ -32,6 +32,7 @@ router.post(
   }),
   projectController.addPost,
 );
-
+// DELETE "/project/:id"
+router.delete('/:id', projectController.deleteProject);
 // Exporto este tramo de ruta
 export default router;
