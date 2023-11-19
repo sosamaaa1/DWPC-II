@@ -8,7 +8,8 @@ export default async function deleteProject(id) {
     if (response.ok) {
       console.log('🔥🔥🔥🔥🔥');
       console.log(await response.json());
-      // window.location.reload();
+      // Recargando la pagina
+      window.location.reload();
     } else {
       throw new Error(
         `Error deleting resource with ID ${id}: ${response.status} ${response.statusText}`,

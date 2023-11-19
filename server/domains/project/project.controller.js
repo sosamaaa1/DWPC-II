@@ -131,7 +131,16 @@ const editPut = async (req, res) => {
 };
 
 // DELETE "/project/:id"
-const deleteProject = (req, res) => res.status(200).json({ id: req.params.id });
+const deleteProject = async (req, res) => {
+  const { id } = req.params;
+  // Usando el modelo para borrar el proyecto
+  try {
+    const result = await ProjectModel.findByIdAndRemove(id);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
 
 export default {
   addForm,
