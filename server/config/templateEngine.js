@@ -1,3 +1,5 @@
+// Se importa el objeto "engine" y se renombra
+// como "exphbs"
 import { engine as exphbs } from 'express-handlebars';
 import path from 'path';
 

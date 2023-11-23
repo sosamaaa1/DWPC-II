@@ -7,13 +7,12 @@ import MongoStore from 'connect-mongo';
 // Importando la URL de la base de datos del sistema
 import configKeys from './configKeys';
 
-console.log('MongoDB URL:', configKeys.MONGO_URL);
 // Creando objeto de opciones para el manejo de sesiones
 const options = {
   secret: 'awesome',
   resave: true,
   saveUninitialized: true,
-  store: MongoStore.create({
+  store: new MongoStore({
     mongoUrl: configKeys.MONGO_URL,
     ttl: 1 * 24 * 60 * 60, // Salva la sesión por 1 día
   }),
