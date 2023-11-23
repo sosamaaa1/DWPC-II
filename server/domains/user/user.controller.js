@@ -21,10 +21,11 @@ const register = (req, res) => {
 
 // POST '/user/register'
 const registerPost = (req, res) => {
+  const { validData, errorData } = req;
   log.info('Se procesa formulario de registro');
   res.json({
-    message: 'Se procesa formulario de registro',
-    data: req.body,
+    validData,
+    errorData,
   });
 };
 
