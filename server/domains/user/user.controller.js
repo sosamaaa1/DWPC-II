@@ -19,8 +19,18 @@ const register = (req, res) => {
   res.render('user/register');
 };
 
+// POST '/user/register'
+const registerPost = (req, res) => {
+  log.info('Se procesa formulario de registro');
+  res.json({
+    message: 'Se procesa formulario de registro',
+    data: req.body,
+  });
+};
+
 export default {
   login,
   logout,
   register,
+  registerPost,
 };
