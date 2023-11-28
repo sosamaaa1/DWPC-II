@@ -89,7 +89,6 @@ connectWithRetry(configKeys.MONGO_URL);
 /**
  * Listen on provided port, on all network interfaces.
  */
-console.log('Variables de entorno:', process.env);
 
 server.listen(port);
 server.on('error', onError); // callback

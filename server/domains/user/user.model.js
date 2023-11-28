@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
+import uniqueValidator from 'mongoose-unique-validator';
 
 // 2. Desestructurando la fn Schema
 const { Schema } = mongoose;
@@ -51,6 +52,9 @@ const UserSchema = new Schema(
   },
   { timestamps: true },
 );
+
+// Adding Plugins to Schema
+UserSchema.plugin(uniqueValidator);
 
 // Asignando metodos de instancia
 UserSchema.methods = {
