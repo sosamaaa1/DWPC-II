@@ -3,9 +3,32 @@ import ExpressSession from 'express-session';
 // Importando soporte para mensajes flash
 import ConnectFlash from 'connect-flash';
 // Importando soporte para almacenado de sesiones
+import mongoose from 'mongoose'; // Asegúrate de importar mongoose
 import MongoStore from 'connect-mongo';
 // Importando la URL de la base de datos del sistema
 import configKeys from './configKeys';
+
+// Función para conectar a MongoDB y devolver la instancia de conexión mongoose
+async function connectToMongo() {
+  const mongoUrl = configKeys.MONGO_URL;
+
+  if (!mongoUrl) {
+    console.error('Error: La URL de conexión a MongoDB no está configurada.');
+    return null;
+  }
+
+  try {
+    await mongoose.connect(mongoUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Conexión a MongoDB establecida correctamente.');
+    return mongoose.connection;
+  } catch (error) {
+    console.error('Error al conectar a MongoDB:', error);
+    return null;
+  }
+}
 
 // Creando objeto de opciones para el manejo de sesiones
 const options = {
@@ -13,13 +36,13 @@ const options = {
   resave: true,
   saveUninitialized: true,
   store: new MongoStore({
-    mongoUrl: configKeys.MONGO_URL,
+    clientPromise: connectToMongo(),
     ttl: 1 * 24 * 60 * 60, // Salva la sesión por 1 día
   }),
 };
 
 // Exportando función registradora
-export default (app) => {
+export default async (app) => {
   // Creando el middleware
   const sessionsMiddleware = ExpressSession(options);
   // Registrando middleware
@@ -32,7 +55,7 @@ export default (app) => {
     res.locals.successMessage = req.flash('successMessage');
     res.locals.errorMessage = req.flash('errorMessage');
     res.locals.infoMessage = req.flash('infoMessage');
-    // Esta servira para passport
+    // Esta servirá para passport
     res.locals.passportError = req.flash('passportError');
     next();
   });
